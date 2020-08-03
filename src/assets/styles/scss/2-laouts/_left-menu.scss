@@ -1,0 +1,73 @@
+.left_menusect{
+    background: darken($mc, $amount: 10%);
+    .dashboard_logo{
+        background: #f7f7f7;
+        text-align: center;
+        margin-bottom: 10px;
+        padding: 5px 0;
+        img{
+            width: 60px;
+        }
+    }
+    nav{
+        ul {
+            li{
+                &.state_active a{
+                    background: rgba(255, 255, 255, 0.2);
+                }
+                a{
+                    padding: 10px 15px;
+                    color: #fff;
+                    display: block;
+                    font-weight: 500;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                    position: relative;
+                     white-space: nowrap;
+                     overflow: hidden;
+                     >span{
+                        @include tan(300ms);
+                    }
+                    
+                    &:hover{
+                        background: rgba(255, 255, 255, 0.2);
+                    }
+                    i{
+                        margin-right: 10px;
+                        color: #f2f2f2;
+                    }
+                }
+            }
+        }
+    }
+
+    .has_submenu{
+        position: relative;
+        ul{
+            background: darken($mc, $amount: 20%);
+            display: none;
+        }
+        >a{
+           &::after{
+            content: "\f107";
+               position: absolute;
+               top: 15px;
+                right: 10px;
+               display: inline-block;
+                font: normal normal normal 14px/1 FontAwesome;
+                font-size: inherit;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                @include tan(300ms);
+
+           }            
+        }
+        &.active{
+           a{
+            &::after{
+                transform: rotate(180deg);
+            }
+           }    
+        }
+    }
+}

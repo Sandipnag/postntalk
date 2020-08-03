@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "postntalk"
+    }
+  },
+  "defaultProject": "postntalk",
+  "cli": {
+    "analytics": false
+  }
 }
