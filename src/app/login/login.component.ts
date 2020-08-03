@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { UtilityService } from '../Services/utility.service';
 import { environment } from '../../environments/environment';
 import { Observable, throwError } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -19,24 +21,32 @@ export class LoginComponent implements OnInit {
   submitted = false;
   querySubscription: any;
 
-  constructor(public utilityService: UtilityService, public router: Router) { }
+  constructor(public utilityService: UtilityService, private router: Router, private cookieService: CookieService,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
-    if (this.loginForm.invalid) {
-      return;
+    this.submitted = true;
+    if (!this.loginForm.invalid) {
+      this.spinner.show();
+      const rqstBody = '{"EMAIL":"' + this.loginForm.value.emailId + '","PASSWORD":"' + this.loginForm.value.password + '"}';
+      this.querySubscription = this.utilityService.callPostApi(environment.loginURL, rqstBody).subscribe(
+        (dataValue: any) => {
+          console.log(dataValue);
+          if (dataValue.code === '200' && dataValue.status === 'success') {
+            localStorage.setItem('AccessToken', dataValue.data.ACCESS_TOKEN);
+            this.cookieService.set('AccessToken', dataValue.data.ACCESS_TOKEN);
+            this.router.navigateByUrl('/dashboard');
+          } else {
+            console.log(dataValue.message);
+          }
+          this.spinner.hide();
+        }, (error: any) => {
+          console.log('error');
+        });
     }
-    const rqstBody = '{"EMAIL":"' + this.loginForm.value.emailId + '","PASSWORD":"' + this.loginForm.value.password + '"}';
-    this.querySubscription = this.utilityService.callPostApi(environment.loginURL, rqstBody).subscribe(
-      (dataValue: any) => {
-        console.log(dataValue);
-        localStorage.setItem('AccessToken', dataValue.data.ACCESS_TOKEN);
-        this.router.navigateByUrl('/dashboard');
-      }, (error: any) => {
-        console.log('error');
-      });
   }
 
   focusFunction(evnt): void {

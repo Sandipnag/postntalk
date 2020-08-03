@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { resolve } from 'dns';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuardService {
 
-  constructor(public jwtHelper: JwtHelperService) { }
-  public isAuthenticated(): Promise<boolean> {
+  constructor(public jwtHelper: JwtHelperService, private cookieService: CookieService) { }
+  public isAuthenticated(): boolean {
     const token = localStorage.getItem('AccessToken');
+    const tokenFromCookie = this.cookieService.get('AccessToken');
+    if (token === tokenFromCookie) {
+      return !this.jwtHelper.isTokenExpired(token);
+    } else {
+      return false;
+    }
     // Check whether the token is expired and return
     // true or false
-    return new Promise((resolve, reject) => !this.jwtHelper.isTokenExpired(token));
   }
 }

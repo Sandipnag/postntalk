@@ -14,34 +14,11 @@ export class CanActivateRouteGuard implements CanActivate {
     return true;
   }*/
   constructor(private authguardservice: AuthGuardService, private router: Router) { }
-  /* canActivate(): boolean {
+  canActivate(): boolean {
     if (!this.authguardservice.isAuthenticated()) {
       this.router.navigateByUrl('/login');
       return false;
     }
     return true;
-  } */
-
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Promise<boolean> | boolean {
-    return new Promise(resolve => {
-      /* this.authguardservice.isAuthenticated()
-.then(status: boolean => {
-  if(status === false) {
-   this.router.navigateByUrl('/login');
   }
-  resolve(status);
-})
-.catch(() => {
- this.router.navigateByUrl('/login');
-  resolve(false);
-} */
-      if (!this.authguardservice.isAuthenticated()) {
-        this.router.navigateByUrl('/login');
-      }
-           )
-  }
-}
-
 }
