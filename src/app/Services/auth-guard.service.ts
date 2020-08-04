@@ -9,8 +9,8 @@ export class AuthGuardService {
 
   constructor(public jwtHelper: JwtHelperService, private cookieService: CookieService) { }
   public isAuthenticated(): boolean {
-    const token = localStorage.getItem('AccessToken');
-    const tokenFromCookie = this.cookieService.get('AccessToken');
+    let token = localStorage.getItem('AccessToken');
+    let tokenFromCookie = this.cookieService.get('AccessToken');
     if (token === tokenFromCookie) {
       return !this.jwtHelper.isTokenExpired(token);
     } else {

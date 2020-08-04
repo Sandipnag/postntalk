@@ -16,7 +16,7 @@ export class CanActivateRouteGuard implements CanActivate {
   constructor(private authguardservice: AuthGuardService, private router: Router) { }
   canActivate(): boolean {
     if (!this.authguardservice.isAuthenticated()) {
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('login');
       return false;
     }
     return true;

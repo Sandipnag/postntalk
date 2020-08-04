@@ -1,0 +1,57 @@
+<section class="common_dashboadrd d-flex">
+    <ngx-spinner color="rgb(0, 188, 212)"></ngx-spinner>
+    <div class="left_menusect">
+        <div class="dashboard_logo">
+            <a href="#">
+                <img src="../assets/images/logo.jpg" alt="">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
+                <li><a href="#"><i class="fa fa-user"></i><span>Account</span></a></li>
+                <li><a [routerLink]="'/dashboard/vertical-listing'"><i class="fa fa-tasks"></i><span>Vertical
+                            types</span></a></li>
+                <li class="has_submenu">
+                    <a href="#"><i class="fa fa-user"></i> <span>Category</span></a>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-circle-o"></i>Category 1</a></li>
+                        <li><a href="#"><i class="fa fa-circle-o"></i>Category 1</a></li>
+                        <li><a href="#"><i class="fa fa-circle-o"></i>Category 1</a></li>
+                        <li><a href="#"><i class="fa fa-circle-o"></i>Category 1</a></li>
+                        <li><a href="#"><i class="fa fa-circle-o"></i>Category 1</a></li>
+                        <li><a href="#"><i class="fa fa-circle-o"></i>Category 1</a></li>
+                    </ul>
+                </li>
+                <li class="has_submenu">
+                    <a href="#"><i class="fa fa-user"></i> <span>Category</span></a>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Product</span></a></li>
+                        <li><a href="#"><i class="fa fa-circle-o"></i><span>Service</span></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-user-plus"></i><span>Create Agent</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-user-plus"></i><span>Create Vendor</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-question-circle"></i><span>Help & Support</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-id-card-o"></i><span>Contacts</span></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="right_menusect">
+        <header class="simple_db_header">
+            <div class="justify-content-between d-flex">
+                <a [routerLink]="" class="hamberger" (click)="toggleSideNav($event)"><i class="fa fa-bars"></i></a>
+                <a href="#"><i class="fa fa-user"></i> Hi Arindam Sarkar </a>
+            </div>
+        </header>
+        <router-outlet></router-outlet>
+    </div>
+</section>
