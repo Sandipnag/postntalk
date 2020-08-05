@@ -16,6 +16,9 @@
                 <span class="error_msg" *ngIf="submitted==true && loginForm.controls['emailId'].hasError('required')">
                     Email is required
                 </span>
+                <span class="error_msg" *ngIf="submitted==true && loginForm.controls['emailId'].hasError('pattern')">
+                    Invalid Email
+                </span>
 
             </div>
             <div class="form-group ar_form_group" [ngClass]="{'has_val':this.loginForm.value.password}">

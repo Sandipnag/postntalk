@@ -1,1 +1,166 @@
-<p>vertical-listing works!</p>
+<div id="accordion" class="custom_acordion">
+    <div *ngFor="let vertical of allVerticalTypes">
+        <div class="card mt-3" *ngIf="vertical.ID !=='dfhaamkiuedcs44dfr'">
+            <div class="card-header" id="headingOne">
+                <button class="btn btn-link" data-toggle="collapse" data-target="{{vertical.ID}}" aria-expanded="true"
+                    aria-controls="{{vertical.ID}}" (click)="togglePanel(vertical.ID)">
+                    <i class="fa fa-cog"></i>{{vertical.NAME}}
+                </button>
+            </div>
+            <div id="{{vertical.ID}}" class="eachVertical collapse show" aria-labelledby="headingOne"
+                data-parent="#accordion" *ngIf="vertical.ID=='dfhaaazxaas44dfr'">
+                <div class="card-body">
+                    <form [formGroup]="wineForm" (ngSubmit)="updateEachVerticalDetails('dfhaaazxaas44dfr')">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group ar_form_group"
+                                    [ngClass]="{'has_val':this.wineForm.value.wineMinOrder}">
+                                    <label for="">Minimum Order level</label>
+                                    <div class="input_wrap">
+                                        <input type="text" class="form-control arFromInut" id="wineMinOrderId"
+                                            formControlName="wineMinOrder" required (focus)="focusFunction($event)"
+                                            (focusout)="focusOutFunction($event)">
+                                    </div>
+                                    <span class="error_msg"
+                                        *ngIf="wineSubmitted==true && wineForm.controls['wineMinOrder'].hasError('required')">
+                                        Minimum Order level is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group ar_form_group"
+                                    [ngClass]="{'has_val':this.wineForm.value.wineMaxOrder}">
+                                    <label for="">Maximum Order level</label>
+                                    <div class="input_wrap">
+                                        <input type="text" class="form-control arFromInut" id="wineMaxOrderId"
+                                            formControlName="wineMaxOrder" required (focus)="focusFunction($event)"
+                                            (focusout)="focusOutFunction($event)">
+                                    </div>
+                                    <span class="error_msg"
+                                        *ngIf="wineSubmitted==true && wineForm.controls['wineMaxOrder'].hasError('required')">
+                                        Maximum Order level is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="checkbox">
+                                    <input class="form-check-input" id="wineKycChcek" type="checkbox" checked=""
+                                        formControlName="wineKyc">
+                                    <label class="form-check-label" for="wineKycChcek">
+                                        KYC
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-3">
+                                <div class="checkbox">
+                                    <input class="form-check-input" id="wineOver18" type="checkbox" checked=""
+                                        formControlName="wineOverEighteen">
+                                    <label class="form-check-label" for="wineOver18">
+                                        Yes I am Over 18
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button class="saveBtnAr">Save</button>
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="{{vertical.ID}}" class="eachVertical collapse" aria-labelledby="headingTwo"
+                data-parent="#accordion" *ngIf="vertical.ID=='dfhaadr44dfr'">
+                <div class="card-body">
+                    <form [formGroup]="medForm" (ngSubmit)="updateEachVerticalDetails('dfhaadr44dfr')">
+                        <div class="row">
+
+                            <div class="col-12">
+                                <div class="form-group ar_form_group"
+                                    [ngClass]="{'has_val':this.medForm.value.medMinOrder}">
+                                    <label for="">Minimum Order level</label>
+                                    <div class="input_wrap">
+                                        <input type="text" class="form-control arFromInut" id="medMinOrderId"
+                                            formControlName="medMinOrder" required (focus)="focusFunction($event)"
+                                            (focusout)="focusOutFunction($event)">
+                                    </div>
+                                    <span class="error_msg"
+                                        *ngIf="medSubmitted==true && medForm.controls['medMinOrder'].hasError('required')">
+                                        Minimum Order level is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group ar_form_group"
+                                    [ngClass]="{'has_val':this.medForm.value.medMaxOrder}">
+                                    <label for="">Maximum Order level</label>
+                                    <div class="input_wrap">
+                                        <input type="text" class="form-control arFromInut" id="medMaxOrderId"
+                                            formControlName="medMaxOrder" required (focus)="focusFunction($event)"
+                                            (focusout)="focusOutFunction($event)">
+                                    </div>
+                                    <span class="error_msg"
+                                        *ngIf="medSubmitted==true && medForm.controls['medMaxOrder'].hasError('required')">
+                                        Maximum Order level is required
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex mb-3">
+                                <div class="checkbox">
+                                    <input class="form-check-input" id="medKycCheck" type="checkbox" checked=""
+                                        formControlName="medKyc">
+                                    <label class="form-check-label" for="medKycCheck">
+                                        KYC
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button class="saveBtnAr">Save</button>
+                            </div>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="{{vertical.ID}}" class="eachVertical collapse" aria-labelledby="headingThree"
+                data-parent="#accordion" *ngIf="vertical.ID=='dfhaamkiuazs44dfr'">
+                <div class="card-body">
+                    <form [formGroup]="landForm" (ngSubmit)="updateEachVerticalDetails('dfhaamkiuazs44dfr')">
+                        <div class="row">
+
+                            <div class="col-12">
+                                <div class="form-group ar_form_group"
+                                    [ngClass]="{'has_val':this.landForm.value.commission}">
+                                    <label for="">Commission Rate %</label>
+                                    <div class="input_wrap">
+                                        <input type="text" class="form-control arFromInut" id="commissionId"
+                                            formControlName="commission" required (focus)="focusFunction($event)"
+                                            (focusout)="focusOutFunction($event)">
+                                    </div>
+                                    <span class="error_msg"
+                                        *ngIf="landSubmitted==true && landForm.controls['commission'].hasError('required')">
+                                        Commission rate is required
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-12 d-flex mb-3">
+                                <div class="checkbox">
+                                    <input class="form-check-input" id="landKycChck" type="checkbox" checked=""
+                                        formControlName="landKyc">
+                                    <label class="form-check-label" for="landKycChck">
+                                        KYC
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button class="saveBtnAr">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

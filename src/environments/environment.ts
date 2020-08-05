@@ -5,7 +5,10 @@
 export const environment = {
   production: false,
   baseURL: 'http://109.235.69.159:2020/api/v1/',
-  loginURL: 'http://109.235.69.159:2020/api/v1/login?_format=json'
+  loginURL: 'http://109.235.69.159:2020/api/v1/login?_format=json',
+  getAllVerticalListingURL: 'http://109.235.69.159:2020/api/v1/getAllVerticalType?_format=json',
+  getEachVerticalDetailsURL: 'http://109.235.69.159:2020/api/v1/getVerticalType/',
+  updateEachVerticalURL: 'http://109.235.69.159:2020/api/v1/updateVerticalType/',
 };
 
 /*

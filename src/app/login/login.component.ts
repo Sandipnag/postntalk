@@ -6,6 +6,8 @@ import { environment } from '../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { NgxSpinnerComponent } from 'ngx-spinner';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class LoginComponent implements OnInit {
 
   loginForm = new FormGroup({
-    emailId: new FormControl('', [Validators.required]),
+    emailId: new FormControl('', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]),
     password: new FormControl('', [Validators.required]),
   });
   submitted = false;
@@ -25,6 +27,13 @@ export class LoginComponent implements OnInit {
     private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('AccessToken') != null) {
+      localStorage.removeItem('AccessToken');
+    }
+    const IsCookieExists: boolean = this.cookieService.check('AccessToken');
+    if (IsCookieExists === true) {
+      this.cookieService.delete('AccessToken', '/');
+    }
   }
 
   onSubmit(): void {
@@ -38,11 +47,11 @@ export class LoginComponent implements OnInit {
           if (dataValue.code === '200' && dataValue.status === 'success') {
             localStorage.setItem('AccessToken', dataValue.data.ACCESS_TOKEN);
             this.cookieService.set('AccessToken', dataValue.data.ACCESS_TOKEN);
-            this.router.navigateByUrl('/dashboard');
-          } else {
-            console.log(dataValue.message);
+            this.router.navigateByUrl('dashboard');
+          } else if (dataValue.code === '200' && dataValue.status === 'error') {
+            Swal.fire({ text: dataValue.message, icon: 'warning', confirmButtonColor: '#00bcd4' });
           }
-          this.spinner.hide();
+          // this.spinner.hide();
         }, (error: any) => {
           console.log('error');
         });
