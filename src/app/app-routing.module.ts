@@ -5,7 +5,8 @@ import { CanActivateRouteGuard as AuthGuard } from './Services/can-activate-rout
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
-  { path: 'dashboard', loadChildren: () => import('./postauth/postauth.module').then(m => m.PostauthModule), canActivate: [AuthGuard] },
+  { path: 'forget-password', loadChildren: () => import('./forget-password/forget-password.module').then(m => m.ForgetPasswordModule) },
+  { path: 'dashboard', loadChildren: () => import('./postauth/postauth.module').then(m => m.PostauthModule), canActivate: [AuthGuard] }
 ];
 
 @NgModule({

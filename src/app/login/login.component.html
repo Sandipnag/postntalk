@@ -10,8 +10,7 @@
             <div class="form-group ar_form_group" [ngClass]="{'has_val':this.loginForm.value.emailId}">
                 <label for="">Email</label>
                 <div class="input_wrap">
-                    <input type="text" class="form-control arFromInut" id="email" formControlName="emailId" required
-                        (focus)="focusFunction($event)" (focusout)="focusOutFunction($event)">
+                    <input type="text" class="form-control" id="email" formControlName="emailId" required placeholder="Email">
                 </div>
                 <span class="error_msg" *ngIf="submitted==true && loginForm.controls['emailId'].hasError('required')">
                     Email is required
@@ -24,8 +23,7 @@
             <div class="form-group ar_form_group" [ngClass]="{'has_val':this.loginForm.value.password}">
                 <label for="">Password</label>
                 <div class="input_wrap">
-                    <input type="text" class="form-control arFromInut" id="password" formControlName="password" required
-                        (focus)="focusFunction($event)" (focusout)="focusOutFunction($event)">
+                    <input type="password" class="form-control" id="password" formControlName="password" required placeholder="Password">
                 </div>
                 <span class="error_msg" *ngIf="submitted==true && loginForm.controls['password'].hasError('required')">
                     Password is
@@ -33,7 +31,7 @@
             </div>
 
             <div class="forgot_passs text-right">
-                <a href="#" class="common_btn">Forgot Password</a>
+                <a  (click)="forgetPassword()" href="javascript:void(0)" class="common_btn">Forgot Password</a>
             </div>
             <div class="text-center submit_btn_sec">
                 <button type="submit" class="submitBtn">Submit</button>

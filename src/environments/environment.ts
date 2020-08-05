@@ -9,6 +9,7 @@ export const environment = {
   getAllVerticalListingURL: 'http://109.235.69.159:2020/api/v1/getAllVerticalType?_format=json',
   getEachVerticalDetailsURL: 'http://109.235.69.159:2020/api/v1/getVerticalType/',
   updateEachVerticalURL: 'http://109.235.69.159:2020/api/v1/updateVerticalType/',
+  foregetPassword: 'http://109.235.69.159:2020/api/v1/forgotPasswordResendActivation?_format=json',
 };
 
 /*
