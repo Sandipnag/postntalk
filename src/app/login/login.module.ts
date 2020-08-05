@@ -1,3 +1,4 @@
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -12,7 +13,8 @@ import { LoginComponent } from './login.component';
     CommonModule,
     LoginRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule
   ],
 })
 export class LoginModule { }
