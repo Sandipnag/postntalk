@@ -14,7 +14,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     LoginRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

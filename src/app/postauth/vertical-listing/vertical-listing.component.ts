@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { UtilityService } from '../../Services/utility.service';
 import { environment } from '../../../environments/environment';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { NgxSpinnerComponent } from 'ngx-spinner';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,6 +11,7 @@ import Swal from 'sweetalert2';
   templateUrl: './vertical-listing.component.html',
   styleUrls: ['./vertical-listing.component.scss']
 })
+
 export class VerticalListingComponent implements OnInit {
   wineForm = new FormGroup({
     wineKyc: new FormControl(''),

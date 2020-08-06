@@ -36,6 +36,10 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  forgetPassword () {
+    this.router.navigateByUrl('/forget-password');
+  }
+
   onSubmit(): void {
     this.submitted = true;
     if (!this.loginForm.invalid) {
@@ -44,6 +48,7 @@ export class LoginComponent implements OnInit {
       this.querySubscription = this.utilityService.callPostApi(environment.loginURL, rqstBody).subscribe(
         (dataValue: any) => {
           console.log(dataValue);
+          this.spinner.hide();
           if (dataValue.code === '200' && dataValue.status === 'success') {
             localStorage.setItem('AccessToken', dataValue.data.ACCESS_TOKEN);
             this.cookieService.set('AccessToken', dataValue.data.ACCESS_TOKEN);
@@ -56,18 +61,6 @@ export class LoginComponent implements OnInit {
           console.log('error');
         });
     }
-  }
-
-  focusFunction(evnt): void {
-    let focusedEle = document.getElementById(evnt.target.id) as HTMLInputElement;
-    focusedEle.closest('.ar_form_group').classList.add('input_active');
-  }
-
-  focusOutFunction(evnt): void {
-    const allfocusedEle = document.querySelectorAll('.ar_form_group');
-    allfocusedEle.forEach(eachFocusedEle => {
-      eachFocusedEle.classList.remove('input_active');
-    });
   }
 
 }

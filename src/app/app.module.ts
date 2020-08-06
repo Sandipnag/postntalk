@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { AuthGuardService } from './Services/auth-guard.service';
 import { JwtHelperService, JwtModule, JwtModuleOptions } from '@auth0/angular-jwt';
 import { CookieService } from 'ngx-cookie-service';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const jwtModuleOptions: JwtModuleOptions = {
   config: {
   }
@@ -22,7 +22,8 @@ const jwtModuleOptions: JwtModuleOptions = {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    JwtModule.forRoot(jwtModuleOptions)
+    JwtModule.forRoot(jwtModuleOptions),
+    BrowserAnimationsModule
   ],
   providers: [AuthGuardService, JwtHelperService, CookieService],
   bootstrap: [AppComponent]
