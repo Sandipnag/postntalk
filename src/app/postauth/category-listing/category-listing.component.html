@@ -1,0 +1,187 @@
+<div class="aCatHead d-flex justify-content-between">
+    <h2 class="">Category Listing</h2>
+    <div class="addBtns d-flex justify-content-end">
+        <a [routerLink]="" data-sidebar="#ar_sidebar1" class="add_categryBtn" (click)="openCatModal()"><i
+                class="fa fa-plus"></i> Add
+            Category</a>
+        <!-- <a href="#modal2" data-sidebar="#ar_sidebar2" class="add_sub_categryBtn ml-5"><i class="fa fa-plus"></i>Add
+        sub Category </a> -->
+    </div>
+</div>
+<div class="d-flex verticalGroup_filter">
+    <label for="" class="arLabel1">Vertical Types</label>
+    <select name="" id="" class="form-control" (change)="changeVertical($event)">
+        <option value="0">Select Vertical</option>
+        <option value="{{vertical.id}}" *ngFor="let vertical of verticals">{{vertical.name}}</option>
+    </select>
+</div>
+
+<table class="table custom_category_table">
+    <thead>
+        <tr>
+            <th scope="col" class="categoryCol">Category Name</th>
+            <th scope="col">Details</th>
+            <th scope="col">Status</th>
+            <th scope="col" class="actionCol">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="categoryCol">Personal Care</td>
+            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque, magnam. Beatae voluptate.</td>
+            <td>active</td>
+            <td class="actionCol">
+                <div>
+                    <button class="btn edit-btn"><i class="fa fa-pencil"></i> Edit</button>
+                    <button class="btn edit-btn add-sub-btn ml-2" data-sidebar="#ar_sidebar2"
+                        (click)="openCatModal()"><i class="fa fa-plus"></i>
+                        Add Sub category</button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" style="display: none;">
+                <table class="table subCategory">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="categoryCol">Sub Category Name</th>
+                            <th scope="col">Details</th>
+                            <th scope="col">Status</th>
+                            <th scope="col" class="subActionCol">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="categoryCol">Personal Care</td>
+                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque, magnam. Beatae
+                                voluptate.</td>
+                            <td>active</td>
+                            <td class="subActionCol">
+                                <button class="btn edit-btn"><i class="fa fa-pencil"></i> Edit</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="categoryCol">Personal Care</td>
+            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque, magnam. Beatae voluptate.</td>
+            <td>active</td>
+            <td class="actionCol">
+                <div>
+                    <button class="btn edit-btn"><i class="fa fa-pencil"></i> Edit</button>
+                    <button class="btn edit-btn add-sub-btn ml-2" data-sidebar="#ar_sidebar2"><i class="fa fa-plus"></i>
+                        Add Sub category</button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" style="display: none;">
+                <table class="table subCategory">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="categoryCol">Sub Category Name</th>
+                            <th scope="col">Details</th>
+                            <th scope="col">Status</th>
+                            <th scope="col" class="subActionCol">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="categoryCol">Personal Care</td>
+                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque, magnam. Beatae
+                                voluptate.</td>
+                            <td>active</td>
+                            <td class="subActionCol">
+                                <button class="btn edit-btn"><i class="fa fa-pencil"></i> Edit</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+<div id="ar_sidebar1" class="custom_side_slide">
+    <button type="button" class="cust_close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="ar_side_slide_inr">
+        <div class="side_slide_header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
+        </div>
+        <form [formGroup]="categoryForm" (ngSubmit)="addCategory('cat')">
+            <div class="side_slide_body">
+                <div class="from-group mb-3">
+                    <div class="cutom_upload_bar">
+                        <img [src]="uploadedImage">
+                        <input type="file" name="" id="catImg" formControlName="categoryImg"
+                            (change)="onFileChange($event)">
+                        <span class="upload_title" *ngIf="uploadedFile == false">Drop Here / Click Here</span>
+                    </div>
+                </div>
+                <div class="from-group mb-3">
+                    <label for="" class="arLabel1">Vertical Types *</label>
+                    <select name="" id="" class="form-control" formControlName="selectVertical">
+                        <option value="0" disabled>Select Vertical</option>
+                        <option value="{{vertical.id}}" *ngFor="let vertical of verticals">{{vertical.name}}</option>
+                    </select>
+                </div>
+                <div class="from-group mb-3">
+                    <label for="" class="arLabel1">Category Name *</label>
+                    <input type="text" class="form-control" placeholder="Category Name" formControlName="categoryName">
+                </div>
+                <div class="from-group mb-3">
+                    <label for="" class="arLabel1">Category Description *</label>
+                    <textarea name="" rows="5" placeholder="Say Something..." class="form-control"
+                        formControlName="categoryDesc"></textarea>
+                </div>
+                <div class="from-group text-center">
+                    <button type="submit" class="submitBtn"><i class="fa fa-plus"></i> Add Category</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="ar_sidebar2" class="custom_side_slide">
+    <button type="button" class="cust_close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="ar_side_slide_inr">
+        <div class="side_slide_header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Sub Category</h5>
+        </div>
+        <form [formGroup]="subCategoryForm" (ngSubmit)="addCategory('subCat')">
+            <div class="side_slide_body">
+                <div class="from-group mb-3">
+                    <div class="cutom_upload_bar">
+                        <img [src]="uploadedImage">
+                        <input type="file" name="" id="subCatImg" formControlName="subCategoryImg"
+                            (change)="onFileChange($event)">
+                        <span class="upload_title" *ngIf="uploadedFile == false">Drop Here / Click Here</span>
+                    </div>
+                </div>
+                <div class="from-group mb-3">
+                    <label for="" class="arLabel1">Sub Category Name *</label>
+                    <input type="text" class="form-control" placeholder="Category Name"
+                        formControlName="subCategoryName">
+                </div>
+                <div class="from-group mb-3">
+                    <label for="" class="arLabel1">Description *</label>
+                    <textarea name="" rows="5" placeholder="Say Something..." class="form-control"
+                        formControlName="subCategoryDesc"></textarea>
+                </div>
+                <div class="from-group text-center">
+                    <button type="submit" class="submitBtn"><i class="fa fa-plus"></i> Add Sub Category</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

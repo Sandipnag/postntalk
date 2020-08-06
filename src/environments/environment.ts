@@ -4,11 +4,13 @@
 
 export const environment = {
   production: false,
-  baseURL: 'http://109.235.69.159:2020/api/v1/',
+  baseURL: 'http://109.235.69.159:2020/',
   loginURL: 'http://109.235.69.159:2020/api/v1/login?_format=json',
   getAllVerticalListingURL: 'http://109.235.69.159:2020/api/v1/getAllVerticalType?_format=json',
   getEachVerticalDetailsURL: 'http://109.235.69.159:2020/api/v1/getVerticalType/',
   updateEachVerticalURL: 'http://109.235.69.159:2020/api/v1/updateVerticalType/',
+  fileUploadUrl: 'http://109.235.69.159:2020/api/v1/uploadFIle?_format=json',
+  addCategoryUrl: 'http://109.235.69.159:2020/api/v1/addCategory/?_format=json'
 };
 
 /*

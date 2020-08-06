@@ -40,4 +40,14 @@ export class UtilityService {
     const res = this.httpClient.put<any>(putUrl, requestBody, httpOtionsWithToken);
     return res;
   }
+  callPostApiWithToken(postUrl: string, requestBody: any): Observable<any> {
+    const authToken = localStorage.getItem('AccessToken');
+    const httpOtionsWithToken = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${authToken}`
+      })
+    };
+    const res = this.httpClient.post<any>(postUrl, requestBody, httpOtionsWithToken);
+    return res;
+  }
 }
