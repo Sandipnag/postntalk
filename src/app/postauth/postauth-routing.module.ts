@@ -7,6 +7,7 @@ const routes: Routes = [
     {
         path: '', component: PostauthNavComponent,
         children: [
+            { path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule) },
             { path: 'category-listing', loadChildren: () => import('./category-listing/category-listing.module').then(m => m.CategoryListingModule) },
             { path: 'vertical-listing', loadChildren: () => import('./vertical-listing/vertical-listing.module').then(m => m.VerticalListingModule) },
             { path: '', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) }

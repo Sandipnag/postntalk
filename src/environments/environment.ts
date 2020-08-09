@@ -11,7 +11,12 @@ export const environment = {
   updateEachVerticalURL: 'http://109.235.69.159:2020/api/v1/updateVerticalType/',
   fileUploadUrl: 'http://109.235.69.159:2020/api/v1/uploadFIle?_format=json',
   addCategoryUrl: 'http://109.235.69.159:2020/api/v1/addCategory/?_format=json',
+  updateCategoryUrl: 'http://109.235.69.159:2020/api/v1/updateCategory/',
   foregetPassword: 'http://109.235.69.159:2020/api/v1/forgotPasswordResendActivation?_format=json',
+  getAllCategory: 'http://109.235.69.159:2020/api/v1/getAllCategory?_format=json',
+  getSingleCategory: 'http://109.235.69.159:2020/api/v1/getCategory/',
+  getProfileUrl: 'http://109.235.69.159:2020/api/v1/userDetails?_format=json',
+  updateProfileUrl: 'http://109.235.69.159:2020/api/v1/profileUpdate?_format=json'
 };
 
 /*

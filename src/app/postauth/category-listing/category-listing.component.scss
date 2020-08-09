@@ -1,8 +1,12 @@
+@import '../../../assets/styles/scss/_variable';
+@import '../../../assets/styles/scss/_mixin';
+@import '../../../assets/styles/scss/2-laouts/category-listing';
+
 .edit-btn {
     background-color: #00bcd4;
           border: none;
           color: white;
-          padding: 6px 12px;
+          padding: 7px 12px;
           font-size: 12px;
           cursor: pointer;
           display:inline;
@@ -12,7 +16,7 @@
 }
 
 .subActionCol {
-    width:12%;
+    width:24%;
 }
 
 .categoryCol {
@@ -20,4 +24,37 @@
 }
 .subCategoryCol {
     width:20%;
+}
+.statCol {
+    width:17%;
+}
+
+.catTable {
+    margin-bottom:0;
+}
+
+.clickable_row td {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.catTable > tr > td{
+    border-top:none;
+    cursor: pointer;
+   // border-bottom: 1px solid #72bec7;
+}
+
+.subCatSection {
+    display:none;
+}
+.table_collapse, .collapse_item {
+    background: #f2f2f2;
+}
+.collapse_item {
+    display:table-row-group;
+}
+
+.customFadeIn {
+    transition: .5s ease-in-out all;
+    display:block;
 }

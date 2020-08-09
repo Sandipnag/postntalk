@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  forgetPassword () {
+  forgetPassword() {
     this.router.navigateByUrl('/forget-password');
   }
 
@@ -50,6 +50,8 @@ export class LoginComponent implements OnInit {
           console.log(dataValue);
           this.spinner.hide();
           if (dataValue.code === '200' && dataValue.status === 'success') {
+            localStorage.setItem('userId', dataValue.data.ID);
+            localStorage.setItem('emailId', dataValue.data.EMAIL);
             localStorage.setItem('AccessToken', dataValue.data.ACCESS_TOKEN);
             this.cookieService.set('AccessToken', dataValue.data.ACCESS_TOKEN);
             this.router.navigateByUrl('dashboard');
