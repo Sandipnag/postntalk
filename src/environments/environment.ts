@@ -14,6 +14,7 @@ export const environment = {
   updateCategoryUrl: 'http://109.235.69.159:2020/api/v1/updateCategory/',
   foregetPassword: 'http://109.235.69.159:2020/api/v1/forgotPasswordResendActivation?_format=json',
   getAllCategory: 'http://109.235.69.159:2020/api/v1/getAllCategory?_format=json',
+  getAllCategoryByVertical: 'http://109.235.69.159:2020/api/v1/getAllCategory?_format=json&vertical=',
   getSingleCategory: 'http://109.235.69.159:2020/api/v1/getCategory/',
   getProfileUrl: 'http://109.235.69.159:2020/api/v1/userDetails?_format=json',
   updateProfileUrl: 'http://109.235.69.159:2020/api/v1/profileUpdate?_format=json'

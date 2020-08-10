@@ -323,6 +323,21 @@ export class CategoryListingComponent implements OnInit {
         }
       });
   }
-  changeVertical($event): void {
+  changeVertical(event): void {
+    this.spinner.show();
+    this.utilityService.callGetApiWithToken(environment.getAllCategoryByVertical+event.target.value).subscribe(
+      (dataValue: any) => {
+        // console.log(dataValue);
+        this.spinner.hide();
+        if (dataValue.code === '200' && dataValue.status === 'success') {
+          this.allcategories = dataValue.data;
+          // console.log(this.allcategories);
+          this.allSubCategory = [];
+          this.allcategories.forEach(element => {
+            this.allSubCategory.push(JSON.parse(element.SUB_CATEGORY));
+          });
+          // console.log(this.allSubCategory);
+        }
+      });
   }
 }
