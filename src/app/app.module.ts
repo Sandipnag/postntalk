@@ -16,7 +16,7 @@ const jwtModuleOptions: JwtModuleOptions = {
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

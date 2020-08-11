@@ -19,9 +19,8 @@
                         <div class="form-group ar_form_group" [ngClass]="{'has_val':this.profileForm.value.FirstName}">
                             <label for="frstName">First Name</label>
                             <div class="input_wrap">
-                                <input type="text" class="form-control arFromInut" id="frstName"
-                                    formControlName="FirstName" required (focus)="focusFunction($event)"
-                                    (focusout)="focusOutFunction($event)">
+                                <input type="text" class="form-control" id="frstName"
+                                    formControlName="FirstName" required>
                             </div>
                         </div>
                     </div>
@@ -29,9 +28,8 @@
                         <div class="form-group ar_form_group" [ngClass]="{'has_val':this.profileForm.value.LastName}">
                             <label for="lastName">Last Name</label>
                             <div class="input_wrap">
-                                <input type="text" class="form-control arFromInut" id="lastName"
-                                    formControlName="LastName" required (focus)="focusFunction($event)"
-                                    (focusout)="focusOutFunction($event)">
+                                <input type="text" class="form-control" id="lastName"
+                                    formControlName="LastName" required>
                             </div>
                         </div>
                     </div>
@@ -41,9 +39,8 @@
                         <div class="form-group ar_form_group" [ngClass]="{'has_val':this.profileForm.value.Country}">
                             <label for="country">Country Code</label>
                             <div class="input_wrap">
-                                <input type="text" class="form-control arFromInut" id="country"
-                                    formControlName="Country" required (focus)="focusFunction($event)"
-                                    (focusout)="focusOutFunction($event)">
+                                <input type="text" class="form-control" id="country"
+                                    formControlName="Country" required >
                             </div>
                         </div>
                     </div>
@@ -51,8 +48,8 @@
                         <div class="form-group ar_form_group" [ngClass]="{'has_val':this.profileForm.value.Gender}">
                             <label for="gender">Gender</label>
                             <div class="input_wrap">
-                                <select class="form-control arFromInut" id="gender" formControlName="Gender" required
-                                    (focus)="focusFunction($event)" (focusout)="focusOutFunction($event)">
+                                <select class="form-control" id="gender" formControlName="Gender" required
+                                    (focus)="focusFunction($event)" >
                                     <option value="0">Select</option>
                                     <option value="{{gender}}" *ngFor="let gender of genders">{{gender}}</option>
                                 </select>
@@ -65,8 +62,8 @@
                         <div class="form-group ar_form_group" [ngClass]="{'has_val':this.profileForm.value.Mobile}">
                             <label for="mobile">Mobile</label>
                             <div class="input_wrap">
-                                <input type="text" class="form-control arFromInut" id="mobile" formControlName="Mobile"
-                                    required (focus)="focusFunction($event)" (focusout)="focusOutFunction($event)">
+                                <input type="text" class="form-control" id="mobile" formControlName="Mobile"
+                                    required (focus)="focusFunction($event)" >
                             </div>
                         </div>
                     </div>

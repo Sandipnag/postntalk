@@ -1,0 +1,28 @@
+<section class="profileDiv pl-5 pr-5">
+    <div class="card mt-3 pl-3 pr-3">
+       <form action=""[formGroup]="resetPasswordForm" (ngSubmit)="updatePassword()">
+            <div class="form-group ar_form_group" [ngClass]="{'has_val':this.resetPasswordForm.value.OldPassword}">
+                <label for="">Old Password</label>
+                <div class="input_wrap">
+                    <input type="password" class="form-control" id="oldPassword" formControlName="OldPassword" required>
+                </div>
+                <span class="error_msg" *ngIf="submitted==true && resetPasswordForm.controls['OldPassword'].hasError('required')">
+                    Old Password is required
+                </span>
+
+            </div>
+            <div class="form-group ar_form_group" [ngClass]="{'has_val':this.resetPasswordForm.value.NewPassword}">
+                <label for="">New Password</label>
+                <div class="input_wrap">
+                    <input type="password" class="form-control" id="newPassword" formControlName="NewPassword" required>
+                </div>
+                <span class="error_msg" *ngIf="submitted==true && resetPasswordForm.controls['NewPassword'].hasError('required')">
+                    Password is
+                    required </span>
+            </div>
+            <div class="text-center submit_btn_sec">
+                <button type="submit" class="submitBtn">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>

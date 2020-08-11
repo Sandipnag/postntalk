@@ -9,43 +9,26 @@
         <nav>
             <ul>
                 <li><a [routerLink]=""><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
-                <!-- <li><a [routerLink]=""><i class="fa fa-user"></i><span>Account</span></a></li> -->
-                <li><a [routerLink]="'/dashboard/profile'"><i class="fa fa-user"></i><span>Profile Details</span></a>
-                </li>
-                <li><a [routerLink]="'/dashboard/vertical-listing'"><i class="fa fa-tasks"></i><span>Vertical
-                            types</span></a></li>
-                <!-- <li class="has_submenu">
-                    <a [routerLink]=""><i class="fa fa-user"></i> <span>Category</span></a>
-                    <ul>
-                        <li><a [routerLink]=""><i class="fa fa-circle-o"></i>Category 1</a></li>
-                        <li><a [routerLink]=""><i class="fa fa-circle-o"></i>Category 1</a></li>
-                        <li><a [routerLink]=""><i class="fa fa-circle-o"></i>Category 1</a></li>
-                        <li><a [routerLink]=""><i class="fa fa-circle-o"></i>Category 1</a></li>
-                        <li><a [routerLink]=""><i class="fa fa-circle-o"></i>Category 1</a></li>
-                        <li><a [routerLink]=""><i class="fa fa-circle-o"></i>Category 1</a></li>
-                    </ul>
-                </li> -->
                 <li class="has_submenu">
-                    <a [routerLink]=""><i class="fa fa-user"></i>
-                        <span>Category</span></a>
+                    <a><i class="fa fa-user"></i>
+                        <span>Profile</span></a>
                     <ul id="subCategory">
-                        <li><a [routerLink]="'/dashboard/category-listing'"><i
-                                    class="fa fa-circle-o"></i><span>Product</span></a></li>
-                        <!-- <li><a [routerLink]=""><i class="fa fa-circle-o"></i><span>Service</span></a></li> -->
+                        <li>
+                            <a [routerLink]="'/dashboard/profile'"><i class="fa fa-circle-o"></i><span>Details</span></a>
+                        </li>
+                        <li>
+                            <a [routerLink]="'/dashboard/reset-password'"><i class="fa fa-circle-o"></i><span>Reset Password</span></a>
+                        </li>
                     </ul>
                 </li>
-                <!-- <li>
-                    <a [routerLink]=""><i class="fa fa-user-plus"></i><span>Create Agent</span></a>
-                </li>
+                <li><a [routerLink]="'/dashboard/vertical-listing'"><i class="fa fa-tasks"></i><span>
+                    Vertical types</span></a></li>
                 <li>
-                    <a [routerLink]=""><i class="fa fa-user-plus"></i><span>Create Vendor</span></a>
+                    <a [routerLink]="'/dashboard/category-listing'">
+                        <i class="fa fa-user"></i>
+                        <span>Category</span>
+                    </a>
                 </li>
-                <li>
-                    <a [routerLink]=""><i class="fa fa-question-circle"></i><span>Help & Support</span></a>
-                </li>
-                <li>
-                    <a [routerLink]=""><i class="fa fa-id-card-o"></i><span>Contacts</span></a>
-                </li> -->
             </ul>
         </nav>
     </div>
