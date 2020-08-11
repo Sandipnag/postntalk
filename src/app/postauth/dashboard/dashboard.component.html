@@ -1,1 +1,233 @@
-<p>dashboard works!</p>
+<div class="row">
+
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-primary shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">INR 40,000</div>
+          </div>
+          <div class="col-auto">
+            <i class="fa fa-calendar fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-success shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">INR 215,000</div>
+          </div>
+          <div class="col-auto">
+            <i class="fa fa-inr fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Earnings (Monthly) Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Products</div>
+            <div class="row no-gutters align-items-center">
+              <div class="col-auto">
+                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">500+</div>
+              </div>
+              <!-- <div class="col">
+                <div class="progress progress-sm mr-2">
+                  <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+          <div class="col-auto">
+            <i class="fa fa-product-hunt fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pending Requests Card Example -->
+  <div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-warning shadow h-100 py-2">
+      <div class="card-body">
+        <div class="row no-gutters align-items-center">
+          <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Verticals</div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+          </div>
+          <div class="col-auto">
+            <i class="fa fa-cog fa-2x text-gray-300"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="">
+
+
+
+  <div class="row">
+
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+
+        <div>
+          <h6 class="mb-0 mt-0 text-center mt-4">Number of vendors</h6>
+          <p class="medium-small mb-0 mt-0 text-center mb-4">This billing cycle</p>
+        </div>
+        <div class="progress blue">
+          <span class="progress-left">
+            <span class="progress-bar"></span>
+          </span>
+          <span class="progress-right">
+            <span class="progress-bar"></span>
+          </span>
+          <div class="progress-value">450+</div>
+        </div>
+
+        <div>
+          <h5 class="text-center mt-4">Rs. 50,150.00</h5>
+          <p class="medium-small text-center mb-4">Used balance this billing cycle</p>
+        </div>
+        <div class="mt-2" style="align-self: flex-end;"><a href="#" class="btn btn-secondary btn-icon-split mb-4 mr-4"
+            style="align-self: center;padding: 10px;background:#018EA0">
+            <span class="icon text-white-50"><i class="fa fa-arrow-right mr-2"></i></span><span class="text">View
+              All</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+        <canvas baseChart [datasets]="lineChartData1" [labels]="lineChartLabels1" [options]="lineChartOptions"
+          [colors]="lineChartColors1" [legend]="lineChartLegend" [chartType]="lineChartType"
+          [plugins]="lineChartPlugins" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+        </canvas>
+        <div>
+          <h5 class="text-center mt-4"></h5>
+          <p class="medium-small text-center mb-4">Numbers of vendors billing cycle</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pie Chart -->
+
+  </div>
+
+  <div class="row">
+
+
+
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+        <canvas baseChart [datasets]="lineChartData2" [labels]="lineChartLabels2" [options]="lineChartOptions"
+          [colors]="lineChartColors2" [legend]="lineChartLegend" [chartType]="lineChartType"
+          [plugins]="lineChartPlugins" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+        </canvas>
+        <div>
+          <h5 class="text-center mt-4"></h5>
+          <p class="medium-small text-center mb-4">Numbers of customer registration</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+
+        <div>
+          <h6 class="mb-0 mt-0 text-center mt-4">Number of Customers</h6>
+          <p class="medium-small mb-0 mt-0 text-center mb-4">This billing cycle</p>
+        </div>
+        <div class="progress blue">
+          <span class="progress-left">
+            <span class="progress-bar"></span>
+          </span>
+          <span class="progress-right">
+            <span class="progress-bar"></span>
+          </span>
+          <div class="progress-value"> 1000 +</div>
+        </div>
+
+        <div>
+          <h5 class="text-center mt-4">1000+ Customers</h5>
+          <p class="medium-small text-center mb-4">User registration cycle</p>
+        </div>
+        <div class="mt-2" style="align-self: flex-end;"><a href="#" class="btn btn-secondary btn-icon-split mb-4 mr-4"
+            style="align-self: center;padding: 10px;background:#018EA0">
+            <span class="icon text-white-50"><i class="fa fa-arrow-right mr-2"></i></span><span class="text">View
+              All</span></a>
+        </div>
+      </div>
+    </div>
+    <!-- Pie Chart -->
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+
+        <div>
+          <h6 class="mb-0 mt-0 text-center mt-4">Number of Agent</h6>
+          <p class="medium-small mb-0 mt-0 text-center mb-4">This registration cycle</p>
+        </div>
+        <div class="progress blue">
+          <span class="progress-left">
+            <span class="progress-bar"></span>
+          </span>
+          <span class="progress-right">
+            <span class="progress-bar"></span>
+          </span>
+          <div class="progress-value">50+</div>
+        </div>
+
+        <div>
+          <h5 class="text-center mt-4">50+ Agent</h5>
+          <p class="medium-small text-center mb-4">Agent registration cycle</p>
+        </div>
+        <div class="mt-2" style="align-self: flex-end;"><a href="#" class="btn btn-secondary btn-icon-split mb-4 mr-4" style="align-self: center;padding: 10px;background:#018EA0">
+          <span class="icon text-white-50"><i class="fa fa-arrow-right mr-2"></i></span><span class="text">View All</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+        <canvas baseChart [datasets]="lineChartData3" [labels]="lineChartLabels3" [options]="lineChartOptions"
+          [colors]="lineChartColors3" [legend]="lineChartLegend" [chartType]="lineChartType"
+          [plugins]="lineChartPlugins" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+        </canvas>
+        <div>
+          <h5 class="text-center mt-4"></h5>
+          <p class="medium-small text-center mb-4">Numbers of agents registration cycle</p>
+        </div>
+        
+      </div>
+
+    </div>
+
+    <!-- Pie Chart -->
+
+  </div>
+
+
+
+</div>

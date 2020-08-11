@@ -16,9 +16,9 @@ export const environment = {
   getSingleCategory: BASE_URL+'api/v1/getCategory/',
   getProfileUrl: BASE_URL+'api/v1/userDetails?_format=json',
   updateProfileUrl: BASE_URL+'api/v1/profileUpdate?_format=json',
-  resetPassword: BASE_URL+'api/v1/resetPassword?_format=json'
+  resetPassword: BASE_URL+'api/v1/resetPassword?_format=json',
+  setNewPassword: BASE_URL +  'api/v1/forgotPassword?_format=json',
 };
-
 
 /*
  * For easier debugging in development mode, you can import the following file
