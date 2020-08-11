@@ -19,6 +19,11 @@ export class UtilityService {
     return res;
   }
 
+  callPutApi(putUrl: string, requestBody: any): Observable<any> {
+    const res = this.httpClient.put<any>(putUrl, requestBody, this.httpOptions);
+    return res;
+  }
+
   callGetApiWithToken(getUrl: string): Observable<any> {
     const authToken = localStorage.getItem('AccessToken');
     const httpOtionsWithToken = {
