@@ -32,9 +32,10 @@ export class ResetComponent implements OnInit {
       let userId = localStorage.getItem('userId');
       let rqstBody = {
         "ID": userId,
-        "FIRST_NAME": this.resetPasswordForm.value.OldPassword,
-        "LAST_NAME": this.resetPasswordForm.value.NewPassword
+        "PASSWORD": this.resetPasswordForm.value.OldPassword,
+        "CURRENT_PASSWORD": this.resetPasswordForm.value.NewPassword
       };
+      console.log(rqstBody)
       this.querySubscription = this.utilityService.callPutApiWithToken(environment.resetPassword, rqstBody).subscribe(
         (dataValue: any) => {
           console.log(dataValue);
