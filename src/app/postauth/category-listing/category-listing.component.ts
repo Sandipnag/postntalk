@@ -62,7 +62,7 @@ export class CategoryListingComponent implements OnInit {
     }); */
     this.fetchAllCategory();
   }
-
+  selectedVertical:any = this.verticals[0].id;
   subCatSecShow(clickedCat, clickedSubCat, evt): void {
     // console.log(evt);
     if (evt.target.tagName !== 'A') {
@@ -115,7 +115,8 @@ export class CategoryListingComponent implements OnInit {
       };
       this.utilityService.callPostApiWithToken(environment.addCategoryUrl, rqstBody).subscribe(
         (dataValue: any) => {
-          //  console.log(dataValue);
+           console.log(dataValue);
+          this.selectedVertical = this.categoryForm.value.selectVertical;
           this.spinner.hide();
           if (dataValue.code === '201' && dataValue.status === 'success') {
             Swal.fire({
@@ -308,13 +309,13 @@ export class CategoryListingComponent implements OnInit {
 
   fetchAllCategory(): void {
     this.spinner.show();
-    this.utilityService.callGetApiWithToken(environment.getAllCategory).subscribe(
+    this.utilityService.callGetApiWithToken(environment.getAllCategoryByVertical+this.selectedVertical).subscribe(
       (dataValue: any) => {
         // console.log(dataValue);
         this.spinner.hide();
         if (dataValue.code === '200' && dataValue.status === 'success') {
           this.allcategories = dataValue.data;
-          // console.log(this.allcategories);
+          
           this.allSubCategory = [];
           this.allcategories.forEach(element => {
             this.allSubCategory.push(JSON.parse(element.SUB_CATEGORY));

@@ -8,27 +8,28 @@
         </div>
         <nav>
             <ul>
-                <li><a [routerLink]=""><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
-                <li class="has_submenu">
-                    <a><i class="fa fa-user"></i>
-                        <span>Profile</span></a>
-                    <ul id="subCategory">
-                        <li>
-                            <a [routerLink]="'/dashboard/profile'"><i class="fa fa-circle-o"></i><span>Details</span></a>
-                        </li>
-                        <li>
-                            <a [routerLink]="'/dashboard/reset-password'"><i class="fa fa-circle-o"></i><span>Reset Password</span></a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a [routerLink]="'/dashboard/vertical-listing'"><i class="fa fa-tasks"></i><span>
-                    Vertical types</span></a></li>
+                <li><a [routerLink]="'/dashboard'"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
+                
+                <li><a [routerLink]="'/dashboard/vertical-listing'"><i class="fa fa-tasks"></i><span>Vertical types</span></a></li>
                 <li>
                     <a [routerLink]="'/dashboard/category-listing'">
                         <i class="fa fa-user"></i>
                         <span>Category</span>
                     </a>
                 </li>
+                <li class="has_submenu">
+                    <a><i class="fa fa-user"></i>
+                        <span>Profile</span></a>
+                    <ul id="subCategory">
+                        <li>
+                            <a [routerLink]="'/dashboard/profile'"><i class="fa fa-circle-o"></i><span>Update Profile</span></a>
+                        </li>
+                        <li>
+                            <a [routerLink]="'/dashboard/reset-password'"><i class="fa fa-circle-o"></i><span>Reset Password</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a [routerLink]="'/'"><i class="fa fa-tachometer"></i> <span>Logout</span></a></li>
             </ul>
         </nav>
     </div>
@@ -36,7 +37,7 @@
         <header class="simple_db_header">
             <div class="justify-content-between d-flex">
                 <a [routerLink]="" class="hamberger" (click)="toggleSideNav($event)"><i class="fa fa-bars"></i></a>
-                <a [routerLink]=""><i class="fa fa-user"></i> Hi Arindam Sarkar </a>
+                <a [routerLink]="'/dashboard/profile'"><i class="fa fa-user" style="font-size: 24px;"></i> </a>
             </div>
         </header>
         <router-outlet></router-outlet>

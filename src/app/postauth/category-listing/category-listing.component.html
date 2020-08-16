@@ -12,9 +12,9 @@
     <div class="row">
         <div class="col-6 d-flex verticalGroup_filter">
             <label for="" class="arLabel1">Vertical Types</label>
-            <select name="" id="" class="form-control" (change)="changeVertical($event)">
+            <select [(ngModel)]="selectedVertical" id="" class="form-control" (change)="changeVertical($event)">
                 <option value="0">Select Vertical</option>
-                <option value="{{vertical.id}}" *ngFor="let vertical of verticals">{{vertical.name}}</option>
+                <option [value]="vertical.id" *ngFor="let vertical of verticals">{{vertical.name}}</option>
             </select>
         </div>
         <div class="col-6 d-flex verticalGroup_filter">
@@ -80,7 +80,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <nav class="sub_category_navigation" aria-label="Page navigation example">
+                            <!-- <nav class="sub_category_navigation" aria-label="Page navigation example">
                                 <ul class="pagination">
                                     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
                                     <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -88,7 +88,7 @@
                                     <li class="page-item"><a class="page-link" href="#">3</a></li>
                                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
                                 </ul>
-                            </nav>
+                            </nav> -->
                         </td>
                     </tr>
                 </table>
@@ -97,7 +97,7 @@
     </tbody>
 </table>
 
-<nav class="category_navigation" aria-label="Page navigation example">
+<!-- <nav class="category_navigation" aria-label="Page navigation example">
     <ul class="pagination">
         <li class="page-item"><a class="page-link" href="#">Previous</a></li>
         <li class="page-item active"><a class="page-link active" href="#">1</a></li>
@@ -105,7 +105,7 @@
         <li class="page-item"><a class="page-link" href="#">3</a></li>
         <li class="page-item"><a class="page-link" href="#">Next</a></li>
     </ul>
-</nav>
+</nav> -->
 
 
 
@@ -123,25 +123,25 @@
                 <div class="from-group mb-3">
                     <div class="cutom_upload_bar">
                         <img [src]="uploadedImage">
-                        <input type="file" name="" id="catImg" formControlName="categoryImg"
+                        <input type="file" name="" id="catImg" required formControlName="categoryImg"
                             (change)="onFileChange($event)">
                         <span class="upload_title" *ngIf="uploadedFile == false">Drop Here / Click Here</span>
                     </div>
                 </div>
                 <div class="from-group mb-3">
                     <label for="" class="arLabel1">Vertical Types *</label>
-                    <select name="" id="" class="form-control" formControlName="selectVertical">
+                    <select required name="" id="" class="form-control" formControlName="selectVertical">
                         <option value="0" disabled>Select Vertical</option>
                         <option value="{{vertical.id}}" *ngFor="let vertical of verticals">{{vertical.name}}</option>
                     </select>
                 </div>
                 <div class="from-group mb-3">
                     <label for="" class="arLabel1">Category Name *</label>
-                    <input type="text" class="form-control" placeholder="Category Name" formControlName="categoryName">
+                    <input required type="text" class="form-control" placeholder="Category Name" formControlName="categoryName">
                 </div>
                 <div class="from-group mb-3">
                     <label for="" class="arLabel1">Category Description *</label>
-                    <textarea name="" rows="5" placeholder="Say Something..." class="form-control"
+                    <textarea required name="" rows="5" placeholder="Say Something..." class="form-control"
                         formControlName="categoryDesc"></textarea>
                 </div>
                 <div class="from-group text-center">

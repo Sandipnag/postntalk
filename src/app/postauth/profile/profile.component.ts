@@ -27,6 +27,7 @@ export class ProfileComponent implements OnInit {
   constructor(public utilityService: UtilityService,
     private spinner: NgxSpinnerService) { }
 
+  userName:any;
   ngOnInit(): void {
     this.spinner.show();
     const rqstBody = '{"EMAIL":"' + localStorage.getItem('emailId') + '"}';
@@ -37,6 +38,7 @@ export class ProfileComponent implements OnInit {
           this.uploadedFile = true;
           this.uploadedImage = environment.baseURL + dataValue.data.IMAGE_PATH;
           this.uploadedImageId = dataValue.data.IMAGE;
+          this.userName = dataValue.data.FIRST_NAME;
           this.profileForm.controls.FirstName.setValue(dataValue.data.FIRST_NAME);
           this.profileForm.controls.LastName.setValue(dataValue.data.LAST_NAME);
           this.profileForm.controls.Country.setValue(dataValue.data.COUNTRY_CODE);
