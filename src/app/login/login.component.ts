@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UtilityService } from '../Services/utility.service';
+import { AuthGuardService } from '../Services/auth-guard.service';
 import { environment } from '../../environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
@@ -24,15 +25,11 @@ export class LoginComponent implements OnInit {
   querySubscription: any;
 
   constructor(public utilityService: UtilityService, private router: Router, private cookieService: CookieService,
-    private spinner: NgxSpinnerService) { }
+    private spinner: NgxSpinnerService, private authGuardService: AuthGuardService) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('AccessToken') != null) {
-      localStorage.removeItem('AccessToken');
-    }
-    const IsCookieExists: boolean = this.cookieService.check('AccessToken');
-    if (IsCookieExists === true) {
-      this.cookieService.delete('AccessToken', '/');
+    if (this.authGuardService.isAuthenticated() && this.authGuardService.isLoggedIn()) {
+      this.router.navigateByUrl('dashboard');
     }
   }
 
@@ -55,6 +52,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('AccessToken', dataValue.data.ACCESS_TOKEN);
             this.cookieService.set('AccessToken', dataValue.data.ACCESS_TOKEN);
             this.router.navigateByUrl('dashboard');
+            localStorage.setItem('isLoggedIn', 'true');
           } else if (dataValue.code === '200' && dataValue.status === 'error') {
             Swal.fire({ text: dataValue.message, icon: 'warning', confirmButtonColor: '#00bcd4' });
           }

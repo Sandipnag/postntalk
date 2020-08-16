@@ -9,8 +9,9 @@
         <nav>
             <ul>
                 <li><a [routerLink]="'/dashboard'"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
-                
-                <li><a [routerLink]="'/dashboard/vertical-listing'"><i class="fa fa-tasks"></i><span>Vertical types</span></a></li>
+
+                <li><a [routerLink]="'/dashboard/vertical-listing'"><i class="fa fa-tasks"></i><span>Vertical
+                            types</span></a></li>
                 <li>
                     <a [routerLink]="'/dashboard/category-listing'">
                         <i class="fa fa-user"></i>
@@ -22,14 +23,17 @@
                         <span>Profile</span></a>
                     <ul id="subCategory">
                         <li>
-                            <a [routerLink]="'/dashboard/profile'"><i class="fa fa-circle-o"></i><span>Update Profile</span></a>
+                            <a [routerLink]="'/dashboard/profile'"><i class="fa fa-circle-o"></i><span>Update
+                                    Profile</span></a>
                         </li>
                         <li>
-                            <a [routerLink]="'/dashboard/reset-password'"><i class="fa fa-circle-o"></i><span>Reset Password</span></a>
+                            <a [routerLink]="'/dashboard/reset-password'"><i class="fa fa-circle-o"></i><span>Reset
+                                    Password</span></a>
                         </li>
                     </ul>
                 </li>
-                <li><a [routerLink]="'/'"><i class="fa fa-tachometer"></i> <span>Logout</span></a></li>
+                <!--  <li><a [routerLink]="'/'"><i class="fa fa-tachometer"></i> <span>Logout</span></a></li> -->
+                <li><a [routerLink]="" (click)="logout()"><i class="fa fa-tachometer"></i> <span>Logout</span></a></li>
             </ul>
         </nav>
     </div>

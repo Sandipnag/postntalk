@@ -10,13 +10,20 @@ export class AuthGuardService {
   constructor(public jwtHelper: JwtHelperService, private cookieService: CookieService) { }
   public isAuthenticated(): boolean {
     let token = localStorage.getItem('AccessToken');
-    let tokenFromCookie = this.cookieService.get('AccessToken');
-    if (token === tokenFromCookie) {
-      return !this.jwtHelper.isTokenExpired(token);
+    if (this.jwtHelper.isTokenExpired(token)) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+  public isLoggedIn(): boolean {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn === 'true') {
+      return true;
     } else {
       return false;
     }
-    // Check whether the token is expired and return
-    // true or false
   }
 }

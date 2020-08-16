@@ -8,14 +8,9 @@ import { AuthGuardService } from '../Services/auth-guard.service';
   providedIn: 'root'
 })
 export class CanActivateRouteGuard implements CanActivate {
-  /*canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
-  }*/
   constructor(private authguardservice: AuthGuardService, private router: Router) { }
   canActivate(): boolean {
-    if (!this.authguardservice.isAuthenticated()) {
+    if (!this.authguardservice.isAuthenticated() || !this.authguardservice.isLoggedIn()) {
       this.router.navigateByUrl('login');
       return false;
     }
