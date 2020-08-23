@@ -1,0 +1,255 @@
+<div class="aCatHead d-flex justify-content-between">
+    <h2 class="">Product Listing</h2>
+    <div class="addBtns d-flex justify-content-end">
+      <a [routerLink]="" data-sidebar="#ar_sidebar1" class="add_categryBtn" (click)="openProductModal('add')"><i
+          class="fa fa-plus"></i> Add Product</a>
+    </div>
+  </div>
+  <div class="verticalGroup">
+    <div class="row">
+      <!-- <div class="col-6 d-flex verticalGroup_filter">
+        <label for="" class="arLabel1">Vertical Types</label>
+        <select [(ngModel)]="selectedVertical" class="form-control" (change)="changeVertical($event)">
+          <option value="0" disabled>Select Vertical</option>
+          <option value="{{vertical.id}}" *ngFor="let vertical of verticals">{{vertical.name}}</option>
+  
+        </select>
+      </div> -->
+      <div class="col-6 d-flex verticalGroup_filter">
+        <input (keyup)="onKey($event)" type="text" class="form-control" placeholder="search by product name">
+        <button (click)="searchProduct()" class="search_btn"><i class="fa fa-search"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="brand-listing-group">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let product of allProducts">
+        <div class="each-brand-card">
+          <div class="d-flex brand_box_inr">
+            <div class="img_part">
+              <img style="max-width: 100%;
+              max-height: 100%;
+              display: block;" [src]="baseURL+product.IMAGE_PATH" alt="">
+            </div>
+            <div class="text_prt">
+              <div class="d-flex text_title justify-content-between">
+                <h2><a href="javascript:;" data-toggle="tooltip" data-placement="top"
+                    title="Brand Name">{{product.NAME}}</a></h2>
+                <ul class="d-flex">
+                  <li><a href="javascript:void(0)"><i class="fa fa-edit"></i></a></li>
+                  <!-- <li (click)="editProductModal(product)"><a href="javascript:void(0)"><i class="fa fa-edit"></i></a></li> -->
+                  
+                </ul>
+              </div>
+              <p>{{product.DESCRIPTION}}</p>
+            </div>
+          </div>
+          <div class="d-flex conected_products">
+            <h2 style="float: right;">Brand Name</h2>
+            <div class="">{{product.BRAND_NAME}}</div>
+          </div>
+          <div class="text-right mt-5">
+            <div (click)="changeStatus(product)" class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" [checked]="product.STATUS=='ACTIVE'">
+              <label class="custom-control-label"
+                for="customSwitch1">{{product.STATUS=="ACTIVE" ? "Active" : "In-Active"}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="ar_sidebar2" class="custom_side_slide">
+    <button type="button" class="cust_close" (click)="closeModal('product')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="ar_side_slide_inr">
+      <div class="side_slide_header">
+        <h5 class="modal-title" id="exampleModalLabel">{{productModalHeader}}</h5>
+      </div>
+      <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+        <div class="side_slide_body">
+          <div class="from-group mb-3">
+            <div class="cutom_upload_bar">
+              <img [src]="uploadedImage">
+              <input type="file" name="" id="productImg" required formControlName="productImg"
+                (change)="onFileChange($event)">
+              <span class="upload_title" *ngIf="uploadedFile == false">Drop Here / Click Here</span>
+            </div>
+          </div>
+          <div class="from-group mb-3">
+            <label for="" class="arLabel1">Vertical Types *</label>
+            <select  required name=""  class="form-control" formControlName="selectVertical"
+              (change)="onVerticalChange()">
+              <option value="0" disabled>Select Vertical</option>
+              <option value="{{vertical.ID}}" *ngFor="let vertical of allVerticalTypes">{{vertical.NAME}}</option>
+            </select>
+          </div>
+          <div class="from-group mb-3">
+            <label for="" class="arLabel1">Category Types *</label>
+            <select  required name=""  class="form-control" formControlName="selectCategory"
+              (change)="getSubCategories()">
+              <option value="0" disabled>Select Category</option>
+              <option value="{{category.ID}}" *ngFor="let category of allcategories">{{category.NAME}}</option>
+            </select>
+          </div>
+          <div class="from-group mb-3">
+            <label for="" class="arLabel1">Subcategory Types</label>
+            <select [disabled]="allSubCategory.length == 0" required name=""  class="form-control" formControlName="selectSubCategory">
+              <option value="0" disabled>Select Subcategory</option>
+              <option value="{{subCategory.ID}}" *ngFor="let subCategory of allSubCategory">{{subCategory.NAME}}</option>
+            </select>
+          </div>
+          <div class="from-group mb-3">
+            <label for="" class="arLabel1">Brands</label>
+            <select [disabled]="allSubCategory.length == 0" required name=""  class="form-control" formControlName="selectedBrandId">
+              <option value="0" disabled>Select Brand</option>
+              <option value="{{brand.ID}}" *ngFor="let brand of allbrands">{{brand.NAME}}</option>
+            </select>
+          </div>
+          <div class="from-group mb-3">
+            <label for="" class="arLabel1">Product Name *</label>
+            <input required type="text" class="form-control" placeholder="Product Name" formControlName="productName">
+          </div>
+          <div class="from-group mb-3">
+            <label for="" class="arLabel1">Product Description *</label>
+            <textarea required name="" rows="5" placeholder="Say Something..." class="form-control"
+              formControlName="productDesc"></textarea>
+          </div>
+          <div class="from-group text-center">
+            <button type="submit" class="submitBtn"> {{modalBtn}} </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<!-- <div class="cat_grid_listing">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="each-category-card">
+                <div class="category_brand_img">
+                    <img src="images/big-logo.png" alt="">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-edit"></i></a></li>
+                        <li><a href="#"><i class="fa fa-plus-square"></i></a></li>
+                    </ul>
+                </div>
+                <div class="category_brand_details">
+                    <h2>Category Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt Lorem
+                        Ipsum</p>
+
+                </div>
+                <div class="categroy_brand_footer">
+                    <a href="#">Sub Category (6)</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="each-category-card">
+                <div class="category_brand_img">
+                    <img src="images/big-logo.png" alt="">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-edit"></i></a></li>
+                        <li><a href="#"><i class="fa fa-plus-square"></i></a></li>
+                    </ul>
+                </div>
+                <div class="category_brand_details">
+                    <h2>Category Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt Lorem
+                        Ipsum</p>
+
+                </div>
+                <div class="categroy_brand_footer">
+                    <a href="#">Sub Category (6)</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="each-category-card">
+                <div class="category_brand_img">
+                    <img src="images/big-logo.png" alt="">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-edit"></i></a></li>
+                        <li><a href="#"><i class="fa fa-plus-square"></i></a></li>
+                    </ul>
+                </div>
+                <div class="category_brand_details">
+                    <h2>Category Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt Lorem
+                        Ipsum</p>
+
+                </div>
+                <div class="categroy_brand_footer">
+                    <a href="#">Sub Category (6)</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="each-category-card">
+                <div class="category_brand_img">
+                    <img src="images/big-logo.png" alt="">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-edit"></i></a></li>
+                        <li><a href="#"><i class="fa fa-plus-square"></i></a></li>
+                    </ul>
+                </div>
+                <div class="category_brand_details">
+                    <h2>Category Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt Lorem
+                        Ipsum</p>
+
+                </div>
+                <div class="categroy_brand_footer">
+                    <a href="#">Sub Category (6)</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="each-category-card">
+                <div class="category_brand_img">
+                    <img src="images/big-logo.png" alt="">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-edit"></i></a></li>
+                        <li><a href="#"><i class="fa fa-plus-square"></i></a></li>
+                    </ul>
+                </div>
+                <div class="category_brand_details">
+                    <h2>Category Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt Lorem
+                        Ipsum</p>
+
+                </div>
+                <div class="categroy_brand_footer">
+                    <a href="#">Sub Category (6)</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="each-category-card">
+                <div class="category_brand_img">
+                    <img src="images/big-logo.png" alt="">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-edit"></i></a></li>
+                        <li><a href="#"><i class="fa fa-plus-square"></i></a></li>
+                    </ul>
+                </div>
+                <div class="category_brand_details">
+                    <h2>Category Name</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt Lorem
+                        Ipsum</p>
+
+                </div>
+                <div class="categroy_brand_footer">
+                    <a href="#">Sub Category (6)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

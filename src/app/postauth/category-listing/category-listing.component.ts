@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { NgxSpinnerComponent } from 'ngx-spinner';
 import { UtilityService } from '../../Services/utility.service';
 import { environment } from '../../../environments/environment';
 import { dropdownValidation } from '../../Validators/custom.validator';

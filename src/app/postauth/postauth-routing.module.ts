@@ -11,7 +11,9 @@ const routes: Routes = [
             { path: 'reset-password', loadChildren: () => import('./restpassword/restpassword.module').then(m => m.RestpasswordModule) },
             { path: 'category-listing', loadChildren: () => import('./category-listing/category-listing.module').then(m => m.CategoryListingModule) },
             { path: 'vertical-listing', loadChildren: () => import('./vertical-listing/vertical-listing.module').then(m => m.VerticalListingModule) },
-            { path: '', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) }
+            { path: '', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
+            { path: 'brand', loadChildren: () => import('./brand/brand.module').then(m => m.BrandModule) },
+            { path: 'product', loadChildren: () => import('./product/product.module').then(m => m.ProductModule) },
         ]
     },
 ];

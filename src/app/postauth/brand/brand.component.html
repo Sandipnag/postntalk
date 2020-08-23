@@ -1,0 +1,153 @@
+<div class="aCatHead d-flex justify-content-between">
+  <h2 class="">Brand Listing</h2>
+  <div class="addBtns d-flex justify-content-end">
+    <a [routerLink]="" data-sidebar="#ar_sidebar1" class="add_categryBtn" (click)="openBrandModal('brand','add')"><i
+        class="fa fa-plus"></i> Add Brand</a>
+  </div>
+</div>
+<div class="verticalGroup">
+  <div class="row">
+    <div class="col-6 d-flex verticalGroup_filter">
+      <label for="" class="arLabel1">Vertical Types</label>
+      <select [(ngModel)]="selectedVertical" class="form-control" (change)="changeVertical($event)">
+        <option value="0" disabled>Select Vertical</option>
+        <option value="{{vertical.id}}" *ngFor="let vertical of verticals">{{vertical.name}}</option>
+
+      </select>
+    </div>
+    <div class="col-6 d-flex verticalGroup_filter">
+      <input (keyup)="onKey($event)" type="text" class="form-control" placeholder="search by brand name">
+      <button (click)="searchBrand()" class="search_btn"><i class="fa fa-search"></i></button>
+    </div>
+  </div>
+</div>
+<div class="brand-listing-group">
+  <div class="row">
+    <div class="col-md-4" *ngFor="let brand of allbrands">
+      <div class="each-brand-card">
+        <div class="d-flex brand_box_inr">
+          <div class="img_part">
+            <img style="max-width: 100%;
+            max-height: 100%;
+            display: block;" [src]="baseURL+brand.IMAGE_PATH" alt="">
+          </div>
+          <div class="text_prt">
+            <div class="d-flex text_title justify-content-between">
+              <h2><a href="javascript:;" data-toggle="tooltip" data-placement="top"
+                  title="Brand Name">{{brand.NAME}}</a></h2>
+              <ul class="d-flex">
+                <li (click)="editBrandModal(brand.ID)"><a href="javascript:void(0)"><i class="fa fa-edit"></i></a></li>
+                <li (click)="openProductModal(brand.ID)"><a href="javascript:void(0)"><i
+                      class="fa fa-plus-square"></i></a></li>
+              </ul>
+            </div>
+            <p>{{brand.DESCRIPTION}}</p>
+          </div>
+        </div>
+        <div class="d-flex align-items-center conected_products">
+          <h2>Connected Products</h2>
+          <div class="conect_prod_no">{{brand.PRODUCT_COUNT}}</div>
+        </div>
+        <div class="text-right mt-5">
+          <div (click)="changeStatus(brand)" class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" [checked]="brand.STATUS=='ACTIVE'">
+            <label class="custom-control-label"
+              for="customSwitch1">{{brand.STATUS=="ACTIVE" ? "Active" : "In-Active"}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="ar_sidebar1" class="custom_side_slide">
+  <button type="button" class="cust_close" (click)="closeBrandModal('brand')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="ar_side_slide_inr">
+    <div class="side_slide_header">
+      <h5 class="modal-title" id="exampleModalLabel">{{brandModalHeader}}</h5>
+    </div>
+    <form [formGroup]="brandForm" (ngSubmit)="addBrand()">
+      <div class="side_slide_body">
+        <div class="from-group mb-3">
+          <div class="cutom_upload_bar">
+            <img [src]="uploadedImage">
+            <input type="file" name="" id="brandImg" required formControlName="brandImg"
+              (change)="onFileChange($event)">
+            <span class="upload_title" *ngIf="uploadedFile == false">Drop Here / Click Here</span>
+          </div>
+        </div>
+        <div *ngIf="action === 'add'" class="from-group mb-3">
+          <label for="" class="arLabel1">Vertical Types *</label>
+          <select required name="" id="" class="form-control" formControlName="selectVertical">
+            <option value="0" disabled>Select Vertical</option>
+            <option value="{{vertical.id}}" *ngFor="let vertical of verticals">{{vertical.name}}</option>
+          </select>
+        </div>
+        <div class="from-group mb-3">
+          <label for="" class="arLabel1">Brand Name *</label>
+          <input required type="text" class="form-control" placeholder="Category Name" formControlName="brandName">
+        </div>
+        <div class="from-group mb-3">
+          <label for="" class="arLabel1">Brand Description *</label>
+          <textarea required name="" rows="5" placeholder="Say Something..." class="form-control"
+            formControlName="brandDesc"></textarea>
+        </div>
+        <div class="from-group text-center">
+          <button type="submit" class="submitBtn"> {{modalBtn}}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="ar_sidebar2" class="custom_side_slide">
+  <button type="button" class="cust_close" (click)="closeBrandModal('product')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="ar_side_slide_inr">
+    <div class="side_slide_header">
+      <h5 class="modal-title" id="exampleModalLabel">{{productModalHeader}}</h5>
+    </div>
+    <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+      <div class="side_slide_body">
+        <div class="from-group mb-3">
+          <div class="cutom_upload_bar">
+            <img [src]="uploadedImage">
+            <input type="file" name="" id="productImg" required formControlName="productImg"
+              (change)="onFileChange($event)">
+            <span class="upload_title" *ngIf="uploadedFile == false">Drop Here / Click Here</span>
+          </div>
+        </div>
+        <div class="from-group mb-3">
+          <label for="" class="arLabel1">Category Types *</label>
+          <select  required name="" id="" class="form-control" formControlName="selectCategory"
+            (change)="getSubCategories()">
+            <option value="0" disabled>Select Category</option>
+            <option value="{{category.ID}}" *ngFor="let category of allcategories">{{category.NAME}}</option>
+          </select>
+        </div>
+        <div class="from-group mb-3">
+          <label for="" class="arLabel1">Subcategory Types *</label>
+          <select [disabled]="allSubCategory.length == 0" required name="" id="" class="form-control" formControlName="selectSubCategory">
+            <option value="0" disabled>Select Subcategory</option>
+            <option value="{{subCategory.ID}}" *ngFor="let subCategory of allSubCategory">{{subCategory.NAME}}</option>
+          </select>
+        </div>
+        <div class="from-group mb-3">
+          <label for="" class="arLabel1">Product Name *</label>
+          <input required type="text" class="form-control" placeholder="Product Name" formControlName="productName">
+        </div>
+        <div class="from-group mb-3">
+          <label for="" class="arLabel1">Product Description *</label>
+          <textarea required name="" rows="5" placeholder="Say Something..." class="form-control"
+            formControlName="productDesc"></textarea>
+        </div>
+        <div class="from-group text-center">
+          <button type="submit" class="submitBtn"> Add Product </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

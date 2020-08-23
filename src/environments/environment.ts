@@ -18,6 +18,13 @@ export const environment = {
   updateProfileUrl: BASE_URL+'api/v1/profileUpdate?_format=json',
   resetPassword: BASE_URL+'api/v1/resetPassword?_format=json',
   setNewPassword: BASE_URL +  'api/v1/forgotPassword?_format=json',
+  addBrandURL: BASE_URL +  'api/v1/addBrand?_format=json',
+  getAllBrand: BASE_URL +  'api/v1/getAllBrand?_format=json',
+  getSingleBrandURL: BASE_URL +  'api/v1/getBrand/',
+  updateBrandURL: BASE_URL +  'api/v1/updateBrand/',
+  addProductURL: BASE_URL +  'api/v1/addProduct?_format=json',
+  getAllProduct: BASE_URL +  'api/v1/getAllProduct?_format=json',
+  updateProductUrl: BASE_URL +  'api/v1/updateProduct/',
 };
 
 /*
